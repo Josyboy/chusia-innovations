@@ -1,14 +1,14 @@
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef } from "react";
 
 import heroWebm from "@/assets/hero.webm.asset.json";
 import { SITE } from "@/content/site";
-import { EASE_OUT } from "./motion";
+import { EASE_OUT, useHydratedReducedMotion } from "./motion";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const s1 = useTransform(scrollYProgress, [0, 1], [1, 9]);
   const s2 = useTransform(scrollYProgress, [0, 1], [1, 14]);

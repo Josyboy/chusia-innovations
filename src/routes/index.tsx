@@ -39,7 +39,7 @@ function Index() {
         Skip to content
       </a>
       <Nav progress={progress} />
-      <main id="main" className="overflow-x-clip bg-background">
+      <main id="main" tabIndex={-1} className="overflow-x-clip bg-background focus:outline-none">
         <Hero />
         <Manifesto />
         <Services />

@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { useRef } from "react";
 
 import { SectionEyebrow } from "./SectionEyebrow";
@@ -29,10 +29,11 @@ function Word({
     </motion.span>
   );
 }
+import { useHydratedReducedMotion } from "./motion";
 
 export function Manifesto() {
   const ref = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.8", "end 0.4"] });
 
   return (

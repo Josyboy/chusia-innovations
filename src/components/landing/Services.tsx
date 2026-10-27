@@ -1,14 +1,15 @@
-import { motion, useMotionValue, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 import { SERVICES } from "@/content/site";
 import { Mark } from "./Mark";
+import { useHydratedReducedMotion } from "./motion";
 
 export function Services() {
   const ref = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useHydratedReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref });
 
   // Translate by exactly the overflow of the card track so the last card always
@@ -51,7 +52,7 @@ export function Services() {
 
   if (reduceMotion) {
     return (
-      <section id="services" className="bg-muted py-32">
+      <section id="services" ref={ref} className="bg-muted py-32">
         <h2 className="mb-10 px-4 text-[clamp(2.5rem,7vw,6rem)] font-extrabold leading-none tracking-[-0.04em] md:px-8">
           What we do
         </h2>
